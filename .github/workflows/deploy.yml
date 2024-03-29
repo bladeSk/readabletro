@@ -16,7 +16,7 @@ jobs:
       with:
         type: 'zip'
         filename: 'readabletro.zip'
-        exclusions: '*.git* /*.jpg /readme.md'
+        exclusions: '*.git* /*.png /readme.md'
 
     - name: Upload Release
       uses: ncipollo/release-action@v1.12.0

@@ -1,12 +1,8 @@
 # Readabletro - Balatro readability mod
 
-![Readabletro](readabletro.jpg)
+![Balatro vs Readabletro](comparison.png)
 
-Original for comparison:
-
-![Original](original.jpg)
-
-Improves readability, especially on the Steam Deck by:
+Improves readability, especially on the Steam Deck, by:
 * replacing the jagged pixel font with a similar smooth font TypoQuik-Bold
 * increasing the font's size
 * providing upscaled smooth graphics when "Pixel Art Smoothing" is enabled
