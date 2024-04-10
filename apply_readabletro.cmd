@@ -1,4 +1,7 @@
 @echo off
+:: ensure the correct working directory is set when running as admin via the right click menu
+pushd %~dp0
+
 setlocal
 set file=Balatro.exe
 set expectedsize=55435299
