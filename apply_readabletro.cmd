@@ -15,15 +15,15 @@ IF NOT EXIST %file% (
 )
 
 if %size% neq %expectedsize% (
-    echo %file% has an unexpected size - only version 1.0.0n-FULL is supported.
+    echo %file% has an unexpected size - only an unmodified version 1.0.1f-FULL is supported.
     pause
     goto :eof
 )
 
-dd if=%file% of=b.exe bs=394752 count=1
-dd if=%file% of=b.zip bs=394752 skip=1
+readabletro\helpers\dd if=%file% of=b.exe bs=394752 count=1
+readabletro\helpers\dd if=%file% of=b.zip bs=394752 skip=1
 
-7z a b.zip .\readabletro\* || goto :error
+readabletro\helpers\7z a b.zip .\readabletro\mod\* || goto :error
 
 ren Balatro.exe Balatro.exe.bak
 copy /y /b b.exe+b.zip Balatro.exe
