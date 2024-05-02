@@ -34,7 +34,8 @@ function UIBox:init(args)
             major = args.config.major,
             type = args.config.align or args.config.type or '',
             bond = args.config.bond or 'Strong',
-            offset = args.config.offset or {x=0,y=0}
+            offset = args.config.offset or {x=0,y=0},
+            lr_clamp = args.config.lr_clamp
         })
         self:set_role{
             xy_bond = args.config.xy_bond,
@@ -81,6 +82,10 @@ function UIBox:init(args)
     if self.Mid ~= self and self.Mid.parent and false then
         self.VT.x = self.VT.x - self.Mid.role.offset.x + (self.Mid.parent.config.padding or 0)
         self.VT.y = self.VT.y - self.Mid.role.offset.y + (self.Mid.parent.config.padding or 0)
+    end
+
+    if self.alignment and self.alignment.lr_clamp then
+        self:lr_clamp()
     end
     
     self.UIRoot:initialize_VT(true)
@@ -268,6 +273,7 @@ function UIBox:remove()
     for k, v in pairs(G.I[self.config.instance_type or 'UIBOX']) do
         if v == self then
             table.remove(G.I[self.config.instance_type or 'UIBOX'], k)
+            break;
         end
     end
     remove_all(self.children)
@@ -682,7 +688,6 @@ function UIElement:draw_self()
 
         if self.config.button_UIE and not self.config.button_UIE.config.button then button_active = false end
     end
-
     if self.config.colour[4] > 0.01 then
         if self.UIT == G.UIT.T and self.config.scale then 
             self.ARGS.text_parallax = self.ARGS.text_parallax or {}
@@ -896,36 +901,6 @@ function UIElement:draw_pixellated_rect(_type, _parallax, _emboss, _progress)
             0 + 2*res, toth - 1*res - ext_up,
             0 + 1*res, toth - 2*res - ext_up,
             0, toth - 4*res - ext_up,
-            -- subw/2, subh/2-ext_up,
-            -- 0,4*res-ext_up,
-            -- 1*res,4*res-ext_up,
-            -- 1*res,2*res-ext_up,
-            -- 2*res,2*res-ext_up,
-            -- 2*res,1*res-ext_up,
-            -- 4*res,1*res-ext_up,
-            -- 4*res,0*res-ext_up,
-            -- subw,0*res-ext_up,
-            -- subw,1*res-ext_up,
-            -- subw+2*res,1*res-ext_up,
-            -- subw+2*res,2*res-ext_up,
-            -- subw+3*res,2*res-ext_up,
-            -- subw+3*res,4*res-ext_up,
-            -- totw,4*res-ext_up,
-            -- totw,subh-ext_up,
-            -- subw+3*res, subh-ext_up,
-            -- subw+3*res, subh+2*res-ext_up,
-            -- subw+2*res, subh+2*res-ext_up,
-            -- subw+2*res, subh+3*res-ext_up,
-            -- subw, subh+3*res-ext_up,
-            -- subw, toth-ext_up,
-            -- 4*res, toth-ext_up,
-            -- 4*res, subh+3*res-ext_up,
-            -- 2*res, subh+3*res-ext_up,
-            -- 2*res, subh+2*res-ext_up,
-            -- 1*res, subh+2*res-ext_up,
-            -- 1*res, subh-ext_up,
-            -- 0, subh-ext_up,
-            -- 0,4*res-ext_up,
         }
         for k, v in ipairs(vertices) do
             if k%2 == 1 and v > totw*self.pixellated_rect.progress then v = totw*self.pixellated_rect.progress end

@@ -4,7 +4,7 @@ pushd %~dp0
 
 setlocal
 set file=Balatro.exe
-set expectedsize=55435299
+set expectedsize=55441144
 
 call :setsize %file%
 
