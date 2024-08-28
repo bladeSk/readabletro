@@ -1025,7 +1025,16 @@ function Game:set_render_settings()
         {name = 'icons', path = "resources/textures/"..self.SETTINGS.GRAPHICS.texture_scaling.."x/icons.png",px=66,py=66},
         {name = 'tags', path = "resources/textures/"..self.SETTINGS.GRAPHICS.texture_scaling.."x/tags.png",px=34,py=34},
         {name = 'stickers', path = "resources/textures/"..self.SETTINGS.GRAPHICS.texture_scaling.."x/stickers.png",px=71,py=95},
-        {name = 'chips', path = "resources/textures/"..self.SETTINGS.GRAPHICS.texture_scaling.."x/chips.png",px=29,py=29}
+        {name = 'chips', path = "resources/textures/"..self.SETTINGS.GRAPHICS.texture_scaling.."x/chips.png",px=29,py=29},
+
+        {name = 'collab_AU_1', path = "resources/textures/"..self.SETTINGS.GRAPHICS.texture_scaling.."x/collabs/collab_AU_1.png",px=71,py=95},
+        {name = 'collab_AU_2', path = "resources/textures/"..self.SETTINGS.GRAPHICS.texture_scaling.."x/collabs/collab_AU_2.png",px=71,py=95},
+        {name = 'collab_TW_1', path = "resources/textures/"..self.SETTINGS.GRAPHICS.texture_scaling.."x/collabs/collab_TW_1.png",px=71,py=95},
+        {name = 'collab_TW_2', path = "resources/textures/"..self.SETTINGS.GRAPHICS.texture_scaling.."x/collabs/collab_TW_2.png",px=71,py=95},
+        {name = 'collab_VS_1', path = "resources/textures/"..self.SETTINGS.GRAPHICS.texture_scaling.."x/collabs/collab_VS_1.png",px=71,py=95},
+        {name = 'collab_VS_2', path = "resources/textures/"..self.SETTINGS.GRAPHICS.texture_scaling.."x/collabs/collab_VS_2.png",px=71,py=95},
+        {name = 'collab_DTD_1', path = "resources/textures/"..self.SETTINGS.GRAPHICS.texture_scaling.."x/collabs/collab_DTD_1.png",px=71,py=95},
+        {name = 'collab_DTD_2', path = "resources/textures/"..self.SETTINGS.GRAPHICS.texture_scaling.."x/collabs/collab_DTD_2.png",px=71,py=95},
     }
     self.asset_images = {
         {name = "playstack_logo", path = "resources/textures/1x/playstack-logo.png", px=1417,py=1417},
@@ -2613,6 +2622,22 @@ function Game:update(dt)
         end
     end    
 
+
+    if G.DEBUG then 
+        local text_count,uie_count, card_count, uib_count, all = 0,0, 0, 0,0
+        for k, v in pairs(G.STAGE_OBJECTS[G.STAGE]) do
+            all = all + 1
+            if v:is(DynaText) then text_count = text_count + 1 end
+            if v:is(Card) then card_count = card_count + 1 end
+            if v:is(UIElement) then uie_count = uie_count + 1 end
+            if v:is(UIBox) then uib_count = uib_count + 1 end
+        end
+
+            G.DEBUG_VALUE = 'text: '..text_count..'\n'..
+                            'uie: '..uie_count..'\n'..
+                            'card: '..card_count..'\n'..
+                            'uib: '..uib_count..'\n'..'all: '..all
+    end
     
     --Save every 10 seconds, unless forced or paused/unpaused
     if G.FILE_HANDLER and G.FILE_HANDLER and G.FILE_HANDLER.update_queued and (
@@ -2900,7 +2925,7 @@ love.graphics.pop()
 
     timer_checkpoint('canvas', 'draw')
 
-    if not _RELEASE_MODE and not G.video_control and G.F_VERBOSE then 
+    if not _RELEASE_MODE and G.DEBUG and not G.video_control and G.F_VERBOSE then 
         love.graphics.push()
         love.graphics.setColor(0, 1, 1,1)
         local fps = love.timer.getFPS( )
