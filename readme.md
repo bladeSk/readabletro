@@ -13,7 +13,7 @@ Improves readability, especially on the Steam Deck, by:
 * unpack to `C:\Program Files (x86)\Steam\steamapps\common\Balatro` (or wherever your game is installed)
 * run `apply_readabletro.cmd` - this will back up the original exe, unpack the game, update the files and repack the game
 
-Supported versions: 1.0.1f-FULL, 1.0.0n-FULL
+Supported versions: 1.0.1g-FULL, 1.0.1f-FULL, 1.0.0n-FULL
 
 ## Steam Deck
 
