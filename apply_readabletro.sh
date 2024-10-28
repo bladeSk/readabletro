@@ -6,11 +6,10 @@ if [ ! -f $FILE ]; then
   exit 1
 fi
 
-EXPECTED_SIZE=55575314
 ACTUAL_SIZE="$(du -b $FILE | cut -f1)"
 
-if [ $ACTUAL_SIZE != $EXPECTED_SIZE ]; then
-  echo "$FILE has an unexpected size - only an unmodified version 1.0.1g-FULL is supported."
+if [ $ACTUAL_SIZE != '55575314' ] && [ $ACTUAL_SIZE != '55738838' ]; then
+  echo "$FILE has an unexpected size - only an unmodified version 1.0.1g-FULL or 1.0.1m-FULL is supported."
   exit 1
 fi
 

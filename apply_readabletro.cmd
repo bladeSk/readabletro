@@ -4,7 +4,6 @@ pushd %~dp0
 
 setlocal
 set file=Balatro.exe
-set expectedsize=55575314
 
 call :setsize %file%
 
@@ -14,11 +13,14 @@ IF NOT EXIST %file% (
 	goto :eof
 )
 
-if %size% neq %expectedsize% (
-    echo %file% has an unexpected size - only an unmodified version 1.0.1g-FULL is supported.
-    pause
-    goto :eof
-)
+if %size% EQU 55575314 goto :sizeok
+if %size% EQU 55738838 goto :sizeok
+
+echo %file% has an unexpected size - only an unmodified version 1.0.1g-FULL or 1.0.1m-FULL is supported.
+pause
+goto :eof
+
+:sizeok
 
 readabletro\helpers\dd if=%file% of=b.exe bs=394752 count=1
 readabletro\helpers\dd if=%file% of=b.zip bs=394752 skip=1
