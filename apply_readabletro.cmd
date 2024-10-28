@@ -27,6 +27,7 @@ readabletro\helpers\dd if=%file% of=b.zip bs=394752 skip=1
 
 readabletro\helpers\7z a b.zip .\readabletro\mod\* || goto :error
 
+del Balatro.exe.bak
 ren Balatro.exe Balatro.exe.bak
 copy /y /b b.exe+b.zip Balatro.exe
 del b.exe

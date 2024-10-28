@@ -19,7 +19,7 @@ dd if=$FILE of=b.zip bs=394752 skip=1 || exit 1
 pushd readabletro/mod > /dev/null
 zip -r ../../b.zip * || exit 1
 popd > /dev/null
-mv Balatro.exe Balatro.exe.bak || exit 1
+mv -f Balatro.exe Balatro.exe.bak || exit 1
 cat b.exe b.zip > Balatro.exe || exit 1
 rm b.exe
 rm b.zip
