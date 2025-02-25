@@ -5,9 +5,10 @@
 Improves readability, especially on the Steam Deck, by:
 * replacing the jagged pixel font with a similar smooth font TypoQuik-Bold
 * increasing the font's size
-* providing smooth graphics upscaled using xBRZ 2x, when "Pixel Art Smoothing" is enabled
+* providing smooth graphics upscaled using xBRZ 2x and HQ 2x, when "Pixel Art Smoothing" is enabled
+* rounding the borders for visual consistency
 
-Supported versions: 1.0.1g-FULL, 1.0.1f-FULL, 1.0.0n-FULL
+Supported versions: 1.0.1o-FULL
 
 ## Installing the mod (Windows)
 
@@ -25,4 +26,4 @@ Supported versions: 1.0.1g-FULL, 1.0.1f-FULL, 1.0.0n-FULL
 
 Alternatively just copy the patched `exe` from your Windows machine to `/home/deck/.local/share/Steam/steamapps/common/Balatro`.
 
-To make the game even smoother, you can enable native upscaling on Steam Deck. Go to (cog icon) > Properties > General, set Game Resolution to 2560x1600 and enable "Set resolution for internal and external display".
+To make the game even smoother, you can enable native upscaling on the Steam Deck. In game mode - go to (cog icon) > Properties > General, set Game Resolution to 2560x1600 and enable "Set resolution for internal and external display".
