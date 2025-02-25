@@ -8,8 +8,8 @@ fi
 
 ACTUAL_SIZE="$(du -b $FILE | cut -f1)"
 
-if [ $ACTUAL_SIZE != '55575314' ] && [ $ACTUAL_SIZE != '55738838' ]; && [ $ACTUAL_SIZE != '56041328' ]; then
-  echo "$FILE has an unexpected size - only an unmodified version 1.0.1g-FULL or 1.0.1n-FULL is supported."
+if [ $ACTUAL_SIZE != '56381239' ]; then
+  echo "$FILE has an unexpected size - only an unmodified version 1.0.1o-FULL is supported."
   exit 1
 fi
 

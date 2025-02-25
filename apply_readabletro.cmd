@@ -13,11 +13,9 @@ IF NOT EXIST %file% (
 	goto :eof
 )
 
-if %size% EQU 55575314 goto :sizeok
-if %size% EQU 55738838 goto :sizeok
-if %size% EQU 56041328 goto :sizeok
+if %size% EQU 56381239 goto :sizeok
 
-echo %file% has an unexpected size - only an unmodified version 1.0.1g-FULL or 1.0.1n-FULL is supported.
+echo %file% has an unexpected size - only an unmodified version 1.0.1o-FULL is supported.
 pause
 goto :eof
 
